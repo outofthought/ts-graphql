@@ -10,7 +10,7 @@ import { RegisterResolver } from "./models/user/Register";
 class HelloResolver {
   @Query(() => String)
   async hello() {
-    return "Hello world";
+    return "Hello from graphql";
   }
 }
 
