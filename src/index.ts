@@ -47,17 +47,25 @@ import { RegisterResolver } from "./models/user/Register";
 import { redis } from "./redis";
 import { LoginResolver } from "./models/user/Login";
 import { MeResolver } from "./models/user/Me";
+import { ConfirmUserResolver } from "./models/user/ConfirmUser";
 
 const main = async () => {
   await createConnection();
 
   const schema = await buildSchema({
-    resolvers: [MeResolver, RegisterResolver, LoginResolver]
+    resolvers: [
+      MeResolver,
+      RegisterResolver,
+      LoginResolver,
+      ConfirmUserResolver
+    ],
+    authChecker: ({ context: { req } }) => {
+      return !!req.session.userId;
+    }
   });
 
   const apolloServer = new ApolloServer({
     schema,
-
     context: ({ req }: any) => ({ req })
   });
 
