@@ -51,6 +51,7 @@ import { ConfirmUserResolver } from "./modules/user/ConfirmUser";
 import { ForgotPasswordResolver } from "./modules/user/ForgotPassword";
 import { ChangePasswordResolver } from "./modules/user/ChangePassword";
 import { LogoutResolver } from "./modules/user/Logout";
+import { ProfilePictureResolver } from "./modules/user/ProfilePicture";
 
 const main = async () => {
   await createConnection();
@@ -63,7 +64,8 @@ const main = async () => {
       ConfirmUserResolver,
       ForgotPasswordResolver,
       ChangePasswordResolver,
-      LogoutResolver
+      LogoutResolver,
+      ProfilePictureResolver
     ],
     authChecker: ({ context: { req } }) => {
       return !!req.session.userId;
