@@ -1,0 +1,2 @@
+# ts-graphql
+TYPE GRAPHQL
